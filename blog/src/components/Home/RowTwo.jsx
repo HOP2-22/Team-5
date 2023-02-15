@@ -4,13 +4,13 @@ import { Link } from "react-router-dom";
 import meet from "../../img/ads.png";
 function RowTwo() {
   return (
-    <div className="flex w-full justify-between">
+    <div className="flex w-full justify-between bg-[#F5F5F5]">
       <div className=" h-screen flex justify-end items-center">
-        <img src={meet} alt="" className="sm:h-[705px] 2xl:h-[900px]" />
+        <img src={meet} alt="" className="sm:h-[505px] 2xl:h-[700px]" />
       </div>
       <div className="flex items-center justify-center w-1/2">
         <div className="flex flex-col gap-10">
-          <div className="w-[398px] h-[120px] text-[48px] font-extrabold">
+          <div className="w-[398px] h-[120px] text-[48px] font-extrabold font-mulish">
             Simple task management
           </div>
           <div className="w-[465px] h-[145px] text-[18px] ">

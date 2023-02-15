@@ -1,7 +1,16 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 function Navbar() {
-  const header = [
+
+    const [offsetY, setOffsetY] = useState(0);
+    useEffect(() => {
+    const handler = () => {
+      setOffsetY(window.scrollY);
+    };
+    window.addEventListener("scroll", handler);
+    return () => window.removeEventListener("scroll", handler);
+  }, []);
+    const header = [
     {
       title: "Products",
     },
@@ -16,18 +25,18 @@ function Navbar() {
     },
   ];
   return (
-    <div className="w-full h-16 fixed">
+    <div className={`${ offsetY < 900  ? "transparent" : "bg-white"} w-full h-20 fixed`}>
       <div className="flex flex-row items-center justify-between">
         <div className="flex items-center gap-1 sm:pl-24 2xl:pl-56">
-          <div className="text-white text-[48px] font-roboto">team</div>
-          <div className="h-2 w-2 bg-[#0ebef2] mt-[24px]"></div>
+          <div className={`${ offsetY < 900 ? "transparent" : "text-gray-900"} text-white text-[48px] font-mulish font-extrabold`}>team</div>
+          <div className={`${ offsetY < 900 ? "transparent" : "bg-black"} h-2 w-2 bg-[#0ebef2] mt-[24px]`}></div>
         </div>
         <div className="flex gap-10 items-center sm:pr-24 2xl:pr-56">
           {header.map((el, index) => {
             return (
               <div
                 key={index}
-                className="text-white text-l font-roboto underline decoration-[#a09e98] cursor-pointer"
+                className={`${ offsetY < 900 ? "transparent" : "text-gray-900" } text-white text-l font-roboto underline decoration-[#a09e98] cursor-pointer`}
               >
                 {el.title}
               </div>
