@@ -1,25 +1,59 @@
 import React, { createContext, useState } from "react";
 
-export const ColorModeContext = createContext();
+export const ThemeContext = createContext({
+  color: "#1a1a00",
+  theme: "white",
+  setColor: () => {},
+  setTheme: () => {},
+  changeTheme: () => {},
+});
 
-const ThemeContext = ({ children }) => {
+export const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState("white");
   const [color, setColor] = useState("#1a1a00");
-  const ColorHandler = () => {
-    theme === "white" ? setTheme("#1a1a00") : setTheme("white");
+  const changeTheme = () => {
+    theme === "white" ? setTheme("black") : setTheme("white");
     color === "#1a1a00" ? setColor("white") : setColor("#1a1a00");
   };
+
   return (
-    <ColorModeContext.Provider
+    <ThemeContext.Provider
       value={{
-        theme: theme,
-        changeTheme: ColorHandler,
-        color: color,
-        instance: instance,
+        color,
+        theme,
+        setColor,
+        setTheme,
+        changeTheme,
       }}
     >
       {children}
-    </ColorModeContext.Provider>
+    </ThemeContext.Provider>
   );
 };
-export default ThemeContext;
+export default ThemeProvider;
+
+// import React, { createContext, useState } from 'react'
+// export const Context = createContext({
+//     isLoginSign: false,
+//     isLogin: true,
+//     error: '',
+//     userInfo: '',
+//     drop: '',
+//     isHistory: false,
+//     setError: () => {},
+//     setDrop: () => {},
+//     setIsLogin: () => {},
+//     setIsLoginSign: () => {},
+//     setIsHistory: () => {}
+// })
+// export const Provider = ({children}) => {
+//     const [drop, setDrop] = useState(false);
+//     const [isLoginSign, setIsLoginSign] = useState(false);
+//     const [isLogin, setIsLogin] = useState(true);
+//     const [isHistory, setIsHistory] = useState(false);
+//     return(
+//         <Context.Provider value={{ isLoginSign, setIsLoginSign, isLogin, setIsLogin, drop, setDrop, isHistory, setIsHistory }}>
+//             {children}
+//         </Context.Provider>
+//     )
+// }

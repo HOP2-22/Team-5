@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 function Navbar() {
+  const { theme, changeTheme } = useContext(ThemeContext);
   const [offsetY, setOffsetY] = useState(0);
   const navigate = useNavigate();
   useEffect(() => {
@@ -26,8 +27,17 @@ function Navbar() {
       href: "/login",
     },
   ];
+  const styles = {
+    text: {
+      color: theme === "black" ? "black" : "white",
+    },
+    backgroundColor: {
+      backgroundColor: theme === "black" ? "white" : "black",
+    },
+  };
   return (
     <div
+      style={styles.backgroundColor}
       className={`${
         offsetY < 100 ? "transparent" : "bg-white"
       } w-full h-20 fixed`}
@@ -35,6 +45,7 @@ function Navbar() {
       <div className="flex flex-row items-center justify-between">
         <div className="flex items-center gap-1 sm:pl-24 2xl:pl-56">
           <div
+            style={styles.text}
             className={`${
               offsetY < 100 ? "transparent" : "text-gray-900"
             } text-white text-[48px] font-mulish font-extrabold`}
@@ -48,6 +59,14 @@ function Navbar() {
           ></div>
         </div>
         <div className="flex gap-10 items-center sm:pr-24 2xl:pr-56">
+          <div>
+            <FormControlLabel
+              control={<MaterialUISwitch sx={{ m: 1 }} defaultChecked />}
+              onChange={() => {
+                changeTheme();
+              }}
+            />
+          </div>
           {header.map((el, index) => {
             return (
               <div

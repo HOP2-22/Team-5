@@ -6,11 +6,13 @@ import SignUp from "../src/pages/Sign";
 function App() {
   return (
     <BrowserRouter>
+        <ThemeProvider>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/sign" element={<SignUp />}/>
       </Routes>
+      </ThemeProvider>
     </BrowserRouter>
   );
 }
