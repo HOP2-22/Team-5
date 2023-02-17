@@ -1,7 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
-
+import { useNavigate } from "react-router-dom";
 function Navbar() {
   const [offsetY, setOffsetY] = useState(0);
+  const navigate = useNavigate();
   useEffect(() => {
     const handler = () => {
       setOffsetY(window.scrollY);
@@ -12,6 +13,7 @@ function Navbar() {
   const header = [
     {
       title: "Products",
+
     },
     {
       title: "Contact",
@@ -21,6 +23,7 @@ function Navbar() {
     },
     {
       title: "Log in",
+      href: "/login",
     },
   ];
   return (
@@ -48,6 +51,9 @@ function Navbar() {
           {header.map((el, index) => {
             return (
               <div
+              onClick={() => {
+                navigate(el.href);
+              }}
                 key={index}
                 className={`${
                   offsetY < 100 ? "transparent" : "text-gray-900"
@@ -57,6 +63,7 @@ function Navbar() {
               </div>
             );
           })}
+
           <div className="w-[128px] h-[56px] text-l text-[#a09e98] font-roboto flex items-center border-2 border-[#a09e98] mt-1 justify-center rounded cursor-pointer">
             Get Access
           </div>

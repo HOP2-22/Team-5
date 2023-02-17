@@ -1,5 +1,5 @@
 import React from "react";
-import Body from "../components/Log/Body";
+import Body from "../components/Log/Login";
 function Login() {
   return (
     <div>
