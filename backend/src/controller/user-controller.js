@@ -27,3 +27,27 @@ exports.createUser = async (request, response) => {
     response.status(400).json(error.message);
   }
 };
+
+exports.login = async (req, res) => {
+  const { email, password } = req.body;
+  try {
+    const user = await Users.findOne({ email });
+    const match = await bcrypt.compare(password, user.password);
+    if (match) {
+      const token = jwt.sign(
+        {
+          email: user.email,
+        },
+        process.env.ACCESS_TOKEN_KEY,
+        { expiresIn: "30m" }
+      );
+      return res
+        .status(200)
+        .json({ email: user.email, match: match, token: token });
+    } else {
+      return res.status(400).json({ message: match });
+    }
+  } catch (error) {
+    return res.status(400).json(error.message);
+  }
+};
