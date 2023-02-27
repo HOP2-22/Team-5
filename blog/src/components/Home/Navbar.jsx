@@ -36,7 +36,7 @@ function Navbar() {
         <div className="flex items-center gap-1 sm:pl-24 2xl:pl-56">
           <div
             className={`${
-              offsetY < 100 ? "transparent" : "text-gray-900"
+              offsetY < 100 ? "transparent" : "text-black"
             } text-white text-[48px] font-mulish font-extrabold`}
           >
             team
@@ -56,7 +56,7 @@ function Navbar() {
               }}
                 key={index}
                 className={`${
-                  offsetY < 100 ? "transparent" : "text-gray-900"
+                  offsetY < 100 ? "transparent" : "text-black"
                 } text-white text-l font-roboto underline decoration-[#a09e98] cursor-pointer`}
               >
                 {el.title}
