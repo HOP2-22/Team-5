@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "../src/pages/Home";
 import Login from "../src/pages/Login";
 import SignUp from "../src/pages/Sign";
+import ThemeProvider from "./context/ThemeContext";
 function App() {
   return (
     <BrowserRouter>
@@ -14,6 +15,7 @@ function App() {
       </Routes>
       </ThemeProvider>
     </BrowserRouter>
+    // <Home />
   );
 }
 

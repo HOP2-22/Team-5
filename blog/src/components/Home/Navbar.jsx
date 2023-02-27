@@ -1,5 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { ThemeContext } from "../../context/ThemeContext";
+import MaterialUISwitch from "./Switch";
+import { FormControlLabel } from "@mui/material";
 function Navbar() {
   const { theme, changeTheme } = useContext(ThemeContext);
   const [offsetY, setOffsetY] = useState(0);
@@ -14,7 +17,6 @@ function Navbar() {
   const header = [
     {
       title: "Products",
-
     },
     {
       title: "Contact",
@@ -70,9 +72,9 @@ function Navbar() {
           {header.map((el, index) => {
             return (
               <div
-              onClick={() => {
-                navigate(el.href);
-              }}
+                onClick={() => {
+                  navigate(el.href);
+                }}
                 key={index}
                 className={`${
                   offsetY < 100 ? "transparent" : "text-gray-900"
