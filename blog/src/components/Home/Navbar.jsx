@@ -13,7 +13,6 @@ function Navbar() {
   const header = [
     {
       title: "Products",
-
     },
     {
       title: "Contact",
@@ -51,9 +50,9 @@ function Navbar() {
           {header.map((el, index) => {
             return (
               <div
-              onClick={() => {
-                navigate(el.href);
-              }}
+                onClick={() => {
+                  navigate(el.href);
+                }}
                 key={index}
                 className={`${
                   offsetY < 100 ? "transparent" : "text-black"

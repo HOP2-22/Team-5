@@ -47,9 +47,9 @@ module.exports = {
         main: ["montserrat"],
         mukta: ["Mukta"],
         mulish: ["Mulish"],
-        opensans: ["Open Sans, sans-serif;"],
-        roboto: ["Roboto, sans-serif;"],
-        itim: ["Itim, cursive;"],
+        opensans: ["Open Sans, sans-serif"],
+        roboto: ["Roboto, sans-serif"],
+        itim: ["Itim, cursive"],
       },
       colors: {
         beige: {
@@ -378,7 +378,15 @@ module.exports = {
         200: "200",
         250: "250",
       },
+      theme: {
+        screens: {
+          sm: "1px",
+          md: "768px",
+          lg: "976px",
+          xl: "1440px",
+        },
+      },
     },
   },
   plugins: [],
-};
+}
