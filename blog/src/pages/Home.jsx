@@ -1,17 +1,17 @@
 import React from "react";
-import Navbar from "../components/Home/Navbar";
-import Home from "../components/Home/Body";
-import RowOne from "../components/Home/RowOne";
-import RowTwo from "../components/Home/RowTwo";
-import RowTri from "../components/Home/RowTri";
+// import Navbar from "../components/Home/Navbar";
+// import Home from "../components/Home/Body";
+// import RowOne from "../components/Home/RowOne";
+// import RowTwo from "../components/Home/RowTwo";
+// import RowTri from "../components/Home/RowTri";
 function Body() {
   return (
     <div>
-      <Navbar />
+      {/* <Navbar />
       <Home />
       <RowOne />
       <RowTwo />
-      <RowTri />
+      <RowTri /> */}
     </div>
   );
 }
