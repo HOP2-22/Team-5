@@ -24,7 +24,7 @@ function RowTri() {
           </div>
         </div>
       </div>
-      <div className=" h-screen flex justify-end items-center">
+      <div className="hidden h-screen md:flex justify-end items-center">
         <img src={meet} alt="" className="sm:h-[605px] 2xl:h-[700px]" />
       </div>
     </div>
