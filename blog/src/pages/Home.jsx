@@ -8,12 +8,10 @@ import Footer from "../components/Home/Footer";
 function Body() {
   return (
     <div>
-      <Navbar />
       <Home />
       <RowOne />
       <RowTwo />
       <RowTri />
-      <Footer />
     </div>
   );
 }
