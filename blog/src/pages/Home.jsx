@@ -1,19 +1,18 @@
 import React from "react";
-import Navbar from "../components/Home/Navbar";
-import Home from "../components/Home/Body";
-import RowOne from "../components/Home/RowOne";
-import RowTwo from "../components/Home/RowTwo";
-import RowTri from "../components/Home/RowTri";
-import Footer from "../components/Home/Footer";
+import { PageOne } from "../Home/page-one";
+import { PageTwo } from "../Home/page-two";
+import { PageThree } from "../Home/page-three";
+import { PageFour } from "../Home/page-four";
+import { PageFive } from "../Home/page-five";
+
 function Body() {
   return (
     <div>
-      <Navbar />
-      <Home />
-      <RowOne />
-      <RowTwo />
-      <RowTri />
-      <Footer />
+      <PageOne />
+      <PageTwo />
+      <PageThree />
+      <PageFour />
+      <PageFive />
     </div>
   );
 }
