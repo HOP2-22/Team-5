@@ -36,7 +36,7 @@ function Navbar() {
           <div
             className={`${
               offsetY < 100 ? "transparent" : "text-gray-900"
-            } text-white text-[48px] font-mulish font-extrabold`}
+            } text-gray-900 text-[48px] font-mulish font-extrabold`}
           >
             team
           </div>
@@ -56,7 +56,7 @@ function Navbar() {
                 key={index}
                 className={`${
                   offsetY < 100 ? "transparent" : "text-gray-900"
-                } text-white text-l font-roboto underline decoration-[#a09e98] cursor-pointer`}
+                } text-gray-900 text-l font-roboto underline decoration-[#a09e98] cursor-pointer`}
               >
                 {el.title}
               </div>

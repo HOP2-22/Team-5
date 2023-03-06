@@ -2,7 +2,7 @@ import React from "react";
 import cardimage from "../../img/card.png";
 function Card() {
   return (
-    <div class="max-w-sm rounded overflow-hidden shadow-lg top-50">
+    <div class="max-w-sm rounded overflow-hidden shadow-lg mt-20 rounded-xl">
       <img class="w-full" src={cardimage} alt="Sunset in the mountains" />
       <div class="px-6 py-4">
         <div class="font-bold text-xl mb-2">The Coldest Sunset</div>
