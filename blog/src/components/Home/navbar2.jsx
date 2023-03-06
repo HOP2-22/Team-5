@@ -28,7 +28,7 @@ function Navbar() {
   return (
     <div
       className={`${
-        offsetY < 100 ? "transparent" : "bg-white"
+        offsetY < 100 ? "transparent" : "bg-transparent"
       } w-full h-50 fixed mt-0`}
     >
       <div className="flex flex-row items-center justify-between">
