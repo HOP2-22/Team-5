@@ -32,7 +32,12 @@ export const PageFive = () => {
       <Box
         sx={{
           height: "400px",
-          width: "1250px",
+          width: {
+            xl: "1250px",
+            lg: "950px",
+            sm: "650px",
+            xs: "350px",
+          },
           paddingLeft: "10px",
           display: "flex",
           alignItems: "center",

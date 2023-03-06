@@ -1,6 +1,8 @@
 import React from "react";
 import image from "../img/Meeting.png";
 import { useContext } from "react";
+import { Box } from "@mui/material";
+import Typography from "@mui/material/Typography";
 import { ColorModeContext } from "..//context/ThemeContext";
 
 const styles = {
@@ -11,7 +13,10 @@ const styles = {
     alignItems: "center",
     color: "black",
     fontWeight: "600",
-    width: "50%",
+    width: {
+      xl: "50%",
+      lg: "40%",
+    },
     fontFamily: "Mulish",
   },
   image: {
@@ -22,19 +27,20 @@ const styles = {
 export const PageTwo = () => {
   const { theme } = useContext(ColorModeContext);
   return (
-    <div
-      style={{
+    <Box
+      sx={{
         display: "flex",
         flexDirection: "row",
+        justifyContent: { xl: "none", lg: "none", md: "center", xs: "center" },
         height: "100vh",
         width: "100vw",
         backgroundColor: theme === "dark" ? "white" : "black",
         // width: "100vw",
       }}
     >
-      <div style={styles.text}>
-        <p
-          style={{
+      <Box sx={styles.text}>
+        <Typography
+          sx={{
             fontSize: "48px",
             margin: "0",
             fontFamily: "Mulish",
@@ -43,8 +49,8 @@ export const PageTwo = () => {
           }}
         >
           Your Hub for
-        </p>
-        <p
+        </Typography>
+        <Typography
           style={{
             fontSize: "48px",
             margin: "0",
@@ -55,57 +61,51 @@ export const PageTwo = () => {
           }}
         >
           teamwork
-        </p>
-        <div
-          style={{
+        </Typography>
+        <Box
+          sx={{
             fontSize: "18px",
             color: theme === "dark" ? "black" : "white",
           }}
         >
-          <p
-            style={{
+          <Typography
+            sx={{
               color: theme === "dark" ? "black" : "white",
               fontFamily: "Mulish",
             }}
           >
             Give everyone you work with—inside and outside your company—a more
-          </p>
-          <p
-            style={{
+          </Typography>
+          <Typography
+            sx={{
               color: theme === "dark" ? "black" : "white",
               fontFamily: "Mulish",
             }}
           >
             productive way to stay in sync. Respond faster with emoji, keep
-          </p>
-          <p
-            style={{
+          </Typography>
+          <Typography
+            sx={{
               color: theme === "dark" ? "black" : "white",
               fontFamily: "Mulish",
             }}
           >
             conversations focused in channels, and simplify all your
             communication
-          </p>
-          <p
-            style={{
+          </Typography>
+          <Typography
+            sx={{
               color: theme === "dark" ? "black" : "white",
               fontFamily: "Mulish",
             }}
           >
             into one place.
-          </p>
+          </Typography>
           <a href="/">Learn more..</a>
-        </div>
-      </div>
-      <img
-        src={image}
-        alt="meeting"
-        className="hidden md:block"
-        width={500}
-        height={700}
-      />
-    </div>
+        </Box>
+      </Box>
+      <img src={image} alt="meeting" className="hidden lg:block" />
+    </Box>
   );
 };
 
