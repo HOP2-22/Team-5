@@ -4,11 +4,14 @@ import pfp from "../img/pfp.png";
 import post from "../img/post.png";
 import Stack from "@mui/material/Stack";
 import compfp from "../img/compfp.png";
+import SendIcon from "@mui/icons-material/Send";
+import Textarea from "@mui/joy/Textarea";
+import Button from "@mui/joy/Button";
 import { borderRadius } from "@mui/system";
 
 function PostPage() {
   return (
-    <Container>
+    <Container sx={{ width: "100%" }}>
       <Box>
         <Container maxWidth="md" sx={{ display: "grid", gap: 5 }}>
           <Box marginTop={30}>
@@ -134,10 +137,27 @@ function PostPage() {
               }}
               src={compfp}
             />
-            <input
+            <Textarea
+              color="neutral"
+              disabled={false}
+              minRows={2}
               placeholder="Comment"
-              sx={{ height: "148px", border: "1px black", width: "100%" }}
+              size="lg"
+              variant="plain"
+              sx={{ width: "70%", fontFamily: "Mulish" }}
             />
+            <Button
+              onClick={function () {}}
+              type="submit"
+              variant="solid"
+              sx={{
+                fontFamily: "Mulish",
+                backgroundColor: "#65D8EF",
+                width: "15%",
+              }}
+            >
+              Submit
+            </Button>
           </Stack>
         </Container>
       </Box>

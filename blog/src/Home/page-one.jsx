@@ -32,8 +32,8 @@ const styles = {
     fontFamily: "Mulish",
   },
   input: {
-    width: "19vw",
-    height: "5vh",
+    width: "250px",
+    height: "50px",
     marginRight: "10px",
     fontWeight: "600",
     fontSize: "16px ",
@@ -42,8 +42,8 @@ const styles = {
     borderRadius: "5px",
   },
   Button: {
-    height: "5.2vh",
-    width: "10vw",
+    height: "50px",
+    width: "100px",
     color: "white",
     fontWeight: "700",
     fontSize: "16px ",
@@ -51,6 +51,11 @@ const styles = {
     backgroundColor: "deepskyblue",
     border: "none",
     borderRadius: "5px",
+  },
+  inputDiv: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
   },
 };
 

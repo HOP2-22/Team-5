@@ -35,7 +35,8 @@ export const PageFive = () => {
           width: {
             xl: "1250px",
             lg: "950px",
-            sm: "650px",
+            md: "650px",
+            sm: "350px",
             xs: "350px",
           },
           paddingLeft: "10px",

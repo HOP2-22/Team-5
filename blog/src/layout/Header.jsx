@@ -14,10 +14,27 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import { ColorModeContext } from "../context/ThemeContext";
 import { useContext } from "react";
 import MenuItem from "@mui/material/MenuItem";
-import Menu from "@mui/material/Menu";
+import { Menu } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 
-const pages = ["Products", "Services", "Blog", "Sign in"];
+const pages = [
+  {
+    page: "Products",
+    path: "/products",
+  },
+  {
+    page: "Services",
+    path: "/services",
+  },
+  {
+    page: "Blog",
+    path: "/blog",
+  },
+  {
+    page: "Sign in",
+    path: "/login",
+  },
+];
 const settings = ["Products", "Services", "Blog", "Sign in"];
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   width: 62,
@@ -108,6 +125,9 @@ export const Header = () => {
                 color: theme === "white" ? "white" : "black",
                 textDecoration: "none",
               }}
+              onClick={() => {
+                navigate("/");
+              }}
             >
               Team.
             </Typography>
@@ -154,8 +174,11 @@ export const Header = () => {
             <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
               {pages.map((page) => (
                 <Typography
-                  key={page}
-                  onClick={handleCloseNavMenu}
+                  key={page?.page}
+                  onClick={() => {
+                    handleCloseNavMenu();
+                    navigate(page?.path);
+                  }}
                   sx={{
                     my: 2,
                     color: theme === "white" ? "white" : "black",
@@ -165,7 +188,7 @@ export const Header = () => {
                     textDecoration: "underline",
                   }}
                 >
-                  {page}
+                  {page?.page}
                 </Typography>
               ))}
             </Box>
@@ -174,8 +197,11 @@ export const Header = () => {
               sx={{
                 color: "blue",
               }}
+              onClick={() => {
+                navigate("/sign");
+              }}
             >
-              Get Access
+              Sign Up
             </Button>
           </Toolbar>
         </Container>
