@@ -4,7 +4,12 @@ import { Box } from "@mui/system";
 
 const styles = {
   BigWord: {
-    fontSize: "48px",
+    fontSize: {
+      xl: "48px",
+      lg: "48px",
+      md: "36px",
+      xs: "24px",
+    },
     fontFamily: "Mulish",
     fontWeight: "700",
     marginBottom: "30px",
@@ -53,7 +58,7 @@ export const PageOne = () => {
   return (
     <Box>
       <Box
-        style={{
+        sx={{
           backgroundImage: `url(${image})`,
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center",
@@ -64,15 +69,13 @@ export const PageOne = () => {
           width: "100vw",
         }}
       >
-        <Box style={styles.middle}>
-          <Box style={styles.BigWord}>
-            Instant collaborations for remote teams
-          </Box>
-          <Box style={styles.word}>
+        <Box sx={styles.middle}>
+          <Box sx={styles.BigWord}>Instant collaborations for remote teams</Box>
+          <Box sx={styles.word}>
             All in one for your remote team chats, collaboration and track
             projects
           </Box>
-          <Box style={styles.inputDiv}>
+          <Box sx={styles.inputDiv}>
             <input placeholder="Email" style={styles.input} />
             <button style={styles.Button}>Get Early Access</button>
           </Box>
