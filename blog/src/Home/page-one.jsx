@@ -4,7 +4,12 @@ import { Box } from "@mui/system";
 
 const styles = {
   BigWord: {
-    fontSize: "48px",
+    fontSize: {
+      xl: "48px",
+      lg: "48px",
+      md: "36px",
+      xs: "24px",
+    },
     fontFamily: "Mulish",
     fontWeight: "700",
     marginBottom: "30px",
