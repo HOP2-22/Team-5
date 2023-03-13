@@ -5,7 +5,7 @@ import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import { styled } from "@mui/material/styles";
 import { Button } from "@mui/material";
-import AppBar from "@mui/material";
+import AppBar from "@mui/material/AppBar";
 import IconButton from "@mui/material/IconButton";
 import FormGroup from "@mui/material/FormGroup";
 import Switch from "@mui/material/Switch";
@@ -14,7 +14,7 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import { ColorModeContext } from "../context/ThemeContext";
 import { useContext } from "react";
 import MenuItem from "@mui/material/MenuItem";
-import Menu from "@mui/material/Menu";
+import { Menu } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 
 const pages = ["Products", "Services", "Blog", "Sign in"];

@@ -1,12 +1,13 @@
 import ThemeContext from "./context/ThemeContext";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-// import Home from "../src/pages/Home";
+import Home from "../src/pages/Home";
 import Login from "../src/pages/Login";
 import SignUp from "../src/pages/Sign";
 import Header from "./layout/Header";
 import Footer from "./layout/Footer";
 import { Box } from "@mui/system";
+import PostPage from "./pages/PostPage";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/sign" element={<SignUp />} />
+            <Route path="/blogpost" element={<PostPage />} />
           </Routes>
           <Footer />
         </Box>
