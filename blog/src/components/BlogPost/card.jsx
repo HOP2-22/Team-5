@@ -5,7 +5,7 @@ function Card() {
   const navigate = useNavigate();
   return (
     <div
-      class="max-w-md rounded overflow-hidden shadow-lg mt-20 rounded-xl"
+      class="max-w-md overflow-hidden shadow-lg mt-20 rounded-xl"
       onClick={() => {
         navigate("/blogpost");
       }}
