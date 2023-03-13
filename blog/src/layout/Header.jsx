@@ -125,6 +125,9 @@ export const Header = () => {
                 color: theme === "white" ? "white" : "black",
                 textDecoration: "none",
               }}
+              onClick={() => {
+                navigate("/");
+              }}
             >
               Team.
             </Typography>

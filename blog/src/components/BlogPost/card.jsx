@@ -1,9 +1,15 @@
 import React from "react";
-// import cardimage from "../../img/card.png";
+import { useNavigate } from "react-router-dom";
 import cardImage from "../../img/ads.png";
 function Card() {
+  const navigate = useNavigate();
   return (
-    <div class="max-w-md rounded overflow-hidden shadow-lg mt-20 rounded-xl">
+    <div
+      class="max-w-md rounded overflow-hidden shadow-lg mt-20 rounded-xl"
+      onClick={() => {
+        navigate("/blogpost");
+      }}
+    >
       <img class="w-full" src={cardImage} alt="Sunset in the mountains" />
       <div class="px-6 py-4">
         <div class="font-bold text-xl mb-2">The Coldest Sunset</div>
