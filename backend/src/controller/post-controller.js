@@ -11,8 +11,7 @@ exports.getPosts = async (req, res) => {
 exports.createPost = async (req, res) => {
   try {
     const post = await Posts.create({
-      username: req.body.username,
-      blogTitle: req.body.blogTitle,
+   blogTitle: req.body.blogTitle,
       text: req.body.text,
       picture: req.body.picture,
     });
