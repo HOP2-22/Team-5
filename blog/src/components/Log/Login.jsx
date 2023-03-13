@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Input from "@mui/joy/Input";
 import "@fontsource/public-sans";
 import Vector from "../../img/Vex.svg";
 import { useNavigate } from "react-router-dom";
+import { ColorModeContext } from "../../context/ThemeContext";
 import axios from "axios";
 import Cookies from "js-cookie";
 
@@ -13,6 +14,7 @@ function Body() {
     email: "",
     password: "",
   });
+  const { setUsername } = useContext(ColorModeContext);
 
   const LoginFunc = async () => {
     try {
@@ -23,6 +25,7 @@ function Body() {
       });
       console.log(res);
       if (res.data.message !== false) {
+        console.log(res.data.user);
         Cookies.set("token", res.data.token);
         navigate(`/`);
       }
