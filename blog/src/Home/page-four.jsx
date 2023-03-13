@@ -1,6 +1,8 @@
 import React from "react";
 import image from "../img/guy.png";
 import { useContext } from "react";
+import { Box } from "@mui/material";
+import { Typography } from "@mui/material";
 import { ColorModeContext } from "..//context/ThemeContext";
 const styles = {
   text: {
@@ -32,8 +34,8 @@ const styles = {
 export const PageFour = () => {
   const { theme } = useContext(ColorModeContext);
   return (
-    <div
-      style={{
+    <Box
+      sx={{
         display: "flex",
         flexDirection: "row",
         height: "100vh",
@@ -41,8 +43,8 @@ export const PageFour = () => {
         width: "100vw",
       }}
     >
-      <div
-        style={{
+      <Box
+        sx={{
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
@@ -52,8 +54,8 @@ export const PageFour = () => {
           color: theme === "dark" ? "black" : "white",
         }}
       >
-        <p
-          style={{
+        <Typography
+          sx={{
             fontSize: "48px",
             margin: "0",
             fontWeight: "800",
@@ -63,9 +65,9 @@ export const PageFour = () => {
           }}
         >
           Scheduling that
-        </p>
-        <p
-          style={{
+        </Typography>
+        <Typography
+          sx={{
             fontSize: "48px",
             margin: "0",
             fontWeight: "800",
@@ -75,33 +77,33 @@ export const PageFour = () => {
           }}
         >
           actually works
-        </p>
-        <div
-          style={{
+        </Typography>
+        <Box
+          sx={{
             fontSize: "18px",
             color: theme === "dark" ? "black" : "white",
           }}
         >
-          <p
-            style={{
+          <Typography
+            sx={{
               fontSize: "18px",
               color: theme === "dark" ? "black" : "white",
               fontFamily: "Mulish",
             }}
           >
             Give everyone you work with—inside and outside your company—a more
-          </p>
-          <p
-            style={{
+          </Typography>
+          <Typography
+            sx={{
               fontSize: "18px",
               color: theme === "dark" ? "black" : "white",
               fontFamily: "Mulish",
             }}
           >
             productive way to stay in sync. Respond faster with emoji, keep
-          </p>
-          <p
-            style={{
+          </Typography>
+          <Typography
+            sx={{
               fontSize: "18px",
               color: theme === "dark" ? "black" : "white",
               fontFamily: "Mulish",
@@ -109,23 +111,23 @@ export const PageFour = () => {
           >
             conversations focused in channels, and simplify all your
             communication
-          </p>
-          <p
-            style={{
+          </Typography>
+          <Typography
+            sx={{
               fontSize: "18px",
               color: theme === "dark" ? "black" : "white",
               fontFamily: "Mulish",
             }}
           >
             into one place.
-          </p>
+          </Typography>
           <a href="#">Learn more..</a>
-        </div>
-      </div>
-      <div style={styles.image}>
+        </Box>
+      </Box>
+      <Box sx={styles.image}>
         <img src={image} alt="brook" className="hidden md:block" />
-      </div>
-    </div>
+      </Box>
+    </Box>
   );
 };
 

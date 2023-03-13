@@ -27,8 +27,8 @@ const styles = {
     fontFamily: "Mulish",
   },
   input: {
-    width: "19vw",
-    height: "5vh",
+    width: "250px",
+    height: "50px",
     marginRight: "10px",
     fontWeight: "600",
     fontSize: "16px ",
@@ -37,8 +37,8 @@ const styles = {
     borderRadius: "5px",
   },
   Button: {
-    height: "5.2vh",
-    width: "10vw",
+    height: "50px",
+    width: "100px",
     color: "white",
     fontWeight: "700",
     fontSize: "16px ",
@@ -47,13 +47,18 @@ const styles = {
     border: "none",
     borderRadius: "5px",
   },
+  inputDiv: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  },
 };
 
 export const PageOne = () => {
   return (
     <Box>
       <Box
-        style={{
+        sx={{
           backgroundImage: `url(${image})`,
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center",
@@ -64,15 +69,13 @@ export const PageOne = () => {
           width: "100vw",
         }}
       >
-        <Box style={styles.middle}>
-          <Box style={styles.BigWord}>
-            Instant collaborations for remote teams
-          </Box>
-          <Box style={styles.word}>
+        <Box sx={styles.middle}>
+          <Box sx={styles.BigWord}>Instant collaborations for remote teams</Box>
+          <Box sx={styles.word}>
             All in one for your remote team chats, collaboration and track
             projects
           </Box>
-          <Box style={styles.inputDiv}>
+          <Box sx={styles.inputDiv}>
             <input placeholder="Email" style={styles.input} />
             <button style={styles.Button}>Get Early Access</button>
           </Box>

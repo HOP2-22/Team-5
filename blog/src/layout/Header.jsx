@@ -5,7 +5,7 @@ import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import { styled } from "@mui/material/styles";
 import { Button } from "@mui/material";
-import AppBar from "@mui/material";
+import AppBar from "@mui/material/AppBar";
 import IconButton from "@mui/material/IconButton";
 import FormGroup from "@mui/material/FormGroup";
 import Switch from "@mui/material/Switch";
@@ -17,7 +17,24 @@ import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 
-const pages = ["Products", "Services", "Blog", "Sign in"];
+const pages = [
+  {
+    page: "Products",
+    path: "/products",
+  },
+  {
+    page: "Services",
+    path: "/services",
+  },
+  {
+    page: "Blog",
+    path: "/blog",
+  },
+  {
+    page: "Sign in",
+    path: "/login",
+  },
+];
 const settings = ["Products", "Services", "Blog", "Sign in"];
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   width: 62,
@@ -154,8 +171,11 @@ export const Header = () => {
             <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
               {pages.map((page) => (
                 <Typography
-                  key={page}
-                  onClick={handleCloseNavMenu}
+                  key={page?.page}
+                  onClick={() => {
+                    handleCloseNavMenu();
+                    navigate(page?.path);
+                  }}
                   sx={{
                     my: 2,
                     color: theme === "white" ? "white" : "black",
@@ -165,7 +185,7 @@ export const Header = () => {
                     textDecoration: "underline",
                   }}
                 >
-                  {page}
+                  {page?.page}
                 </Typography>
               ))}
             </Box>
@@ -174,8 +194,11 @@ export const Header = () => {
               sx={{
                 color: "blue",
               }}
+              onClick={() => {
+                navigate("/sign");
+              }}
             >
-              Get Access
+              Sign Up
             </Button>
           </Toolbar>
         </Container>
