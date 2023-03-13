@@ -33,6 +33,7 @@ export const PageTwo = () => {
         flexDirection: "row",
         justifyContent: { xl: "none", lg: "none", md: "center", xs: "center" },
         height: "100vh",
+        alignItems: "center",
         width: "100vw",
         backgroundColor: theme === "dark" ? "white" : "black",
         // width: "100vw",
@@ -104,7 +105,11 @@ export const PageTwo = () => {
           <a href="/">Learn more..</a>
         </Box>
       </Box>
-      <img src={image} alt="meeting" className="hidden lg:block" />
+      <Box
+      // sx={{ width: { xl: "500", lg: "400px", md: "300px" }, height: "100vh" }}
+      >
+        <img src={image} alt="meeting" className="hidden md:block" />
+      </Box>
     </Box>
   );
 };

@@ -33,7 +33,17 @@ export const PageThree = () => {
         backgroundColor: theme === "dark" ? "white" : "black",
       }}
     >
-      <img src={image} alt="brook" className="hidden md:block" />
+      <Box
+        sx={{
+          width: "50%",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          fontFamily: "Mulish",
+        }}
+      >
+        <img src={image} alt="brook" />
+      </Box>
       <Box sx={styles.text}>
         <Typography
           sx={{

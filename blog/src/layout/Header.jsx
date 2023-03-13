@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Container from "@mui/material/Container";
@@ -16,6 +16,8 @@ import { useContext } from "react";
 import MenuItem from "@mui/material/MenuItem";
 import { Menu } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
+import axios from "axios";
+import Cookies from "js-cookie";
 
 const pages = [
   {
@@ -35,7 +37,24 @@ const pages = [
     path: "/login",
   },
 ];
-const settings = ["Products", "Services", "Blog", "Sign in"];
+const settings = [
+  {
+    setting: "Products",
+    path: "/products",
+  },
+  {
+    setting: "Services",
+    path: "/services",
+  },
+  {
+    setting: "Blog",
+    path: "/blog",
+  },
+  {
+    setting: "Sign in",
+    path: "/login",
+  },
+];
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   width: 62,
   height: 34,
@@ -82,11 +101,26 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
     borderRadius: 20 / 2,
   },
 }));
+
 export const Header = () => {
-  const { theme, changeTheme } = useContext(ColorModeContext);
+  const { theme, changeTheme, username, setUsername } =
+    useContext(ColorModeContext);
   let navigate = useNavigate();
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const logOut = (config) => {
+    setUsername(null);
+    Cookies.remove("token");
+    config.headers.remove("token");
+  };
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [anchorElNav, setAnchorElNav] = useState(null);
+  const [anchorElUser, setAnchorElUser] = useState(null);
+  const open = Boolean(anchorEl);
+  const handleClickPro = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -113,6 +147,9 @@ export const Header = () => {
             disableGutters
             sx={{
               backgroundColor: theme === "white" ? "black" : "white",
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "space-around",
             }}
           >
             <Typography
@@ -132,77 +169,211 @@ export const Header = () => {
               Team.
             </Typography>
 
-            <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-              <IconButton
-                size="large"
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                onClick={handleOpenNavMenu}
-                sx={{ color: theme === "white" ? "white" : "black" }}
-              >
-                <MenuIcon />
-              </IconButton>
-              <Menu
-                id="menu-appbar"
-                anchorEl={anchorElNav}
-                keepMounted
-                open={Boolean(anchorElNav)}
-                onClose={handleCloseNavMenu}
-                sx={{
-                  display: {
-                    xs: "block",
-                    md: "none",
-                  },
-                }}
-              >
-                {settings.map((setting) => (
-                  <MenuItem key={setting} onClick={handleCloseNavMenu}>
-                    <Typography textAlign="center">{setting}</Typography>
-                  </MenuItem>
-                ))}
-              </Menu>
-            </Box>
-            <FormGroup>
-              <FormControlLabel
-                control={<MaterialUISwitch sx={{ m: 1 }} defaultChecked />}
-                onChange={() => {
-                  changeTheme();
-                }}
-              />
-            </FormGroup>
-            <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-              {pages.map((page) => (
-                <Typography
-                  key={page?.page}
-                  onClick={() => {
-                    handleCloseNavMenu();
-                    navigate(page?.path);
-                  }}
-                  sx={{
-                    my: 2,
-                    color: theme === "white" ? "white" : "black",
-                    display: "block",
-                    marginRight: "10px",
-                    fontFamily: "Mulish",
-                    textDecoration: "underline",
-                  }}
-                >
-                  {page?.page}
-                </Typography>
-              ))}
-            </Box>
-            <Button
-              variant="outlined"
+            <Box
               sx={{
-                color: "blue",
-              }}
-              onClick={() => {
-                navigate("/sign");
+                width: "40vw",
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+                justifyContent: "flex-end",
               }}
             >
-              Sign Up
-            </Button>
+              <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+                <IconButton
+                  size="large"
+                  aria-label="account of current user"
+                  aria-controls="menu-appbar"
+                  aria-haspopup="true"
+                  onClick={handleOpenNavMenu}
+                  sx={{ color: theme === "white" ? "white" : "black" }}
+                >
+                  <MenuIcon />
+                </IconButton>
+                {username ? (
+                  <div>
+                    <div>
+                      <Button
+                        id="demo-positioned-button"
+                        aria-controls={
+                          open ? "demo-positioned-menu" : undefined
+                        }
+                        aria-haspopup="true"
+                        aria-expanded={open ? "true" : undefined}
+                        onClick={handleClickPro}
+                        sx={{
+                          color: "black",
+                          fontWeight: "600",
+                          fontSize: "20px",
+                          fontFamily: "Ubuntu",
+                        }}
+                      >
+                        {username}
+                      </Button>
+                      <Menu
+                        id="demo-positioned-menu"
+                        aria-labelledby="demo-positioned-button"
+                        anchorEl={anchorEl}
+                        open={open}
+                        onClose={handleClose}
+                        anchorOrigin={{
+                          vertical: "top",
+                          horizontal: "left",
+                        }}
+                        transformOrigin={{
+                          vertical: "top",
+                          horizontal: "left",
+                        }}
+                      >
+                        <MenuItem
+                          onClick={() => {
+                            handleClose();
+                            logOut();
+                          }}
+                          sx={{ width: "150px" }}
+                        >
+                          Log Out
+                        </MenuItem>
+                        <MenuItem
+                          onClick={() => {
+                            handleClose();
+                            navigate(`/history`);
+                          }}
+                          sx={{ width: "150px" }}
+                        >
+                          Blog
+                        </MenuItem>
+                      </Menu>
+                    </div>
+                  </div>
+                ) : (
+                  <Menu
+                    id="menu-appbar"
+                    anchorEl={anchorElNav}
+                    keepMounted
+                    open={Boolean(anchorElNav)}
+                    onClose={handleCloseNavMenu}
+                    sx={{
+                      display: {
+                        xs: "block",
+                        md: "none",
+                      },
+                    }}
+                  >
+                    {settings.map((setting) => (
+                      <MenuItem
+                        key={setting?.setting}
+                        onClick={() => {
+                          navigate(setting?.path);
+                          handleCloseNavMenu();
+                        }}
+                      >
+                        <Typography textAlign="center">
+                          {setting?.setting}
+                        </Typography>
+                      </MenuItem>
+                    ))}
+                  </Menu>
+                )}
+              </Box>
+              <FormGroup>
+                <FormControlLabel
+                  control={<MaterialUISwitch sx={{ m: 1 }} defaultChecked />}
+                  onChange={() => {
+                    changeTheme();
+                  }}
+                />
+              </FormGroup>
+              {username ? (
+                <div>
+                  <div>
+                    <Typography
+                      // id="demo-positioned-button"
+                      // aria-controls={open ? "demo-positioned-menu" : undefined}
+                      // aria-haspopup="true"
+                      // aria-expanded={open ? "true" : undefined}
+                      onClick={handleClickPro}
+                      sx={{
+                        color: "black",
+                        fontWeight: "600",
+                        fontSize: "20px",
+                        fontFamily: "Mulish",
+                      }}
+                    >
+                      {username}
+                    </Typography>
+                    <Menu
+                      id="demo-positioned-menu"
+                      aria-labelledby="demo-positioned-button"
+                      anchorEl={anchorEl}
+                      open={open}
+                      onClose={handleClose}
+                      anchorOrigin={{
+                        vertical: "top",
+                        horizontal: "left",
+                      }}
+                      transformOrigin={{
+                        vertical: "top",
+                        horizontal: "left",
+                      }}
+                    >
+                      <MenuItem
+                        onClick={() => {
+                          logOut();
+                          handleClose();
+                        }}
+                        sx={{ width: "150px" }}
+                      >
+                        Log Out
+                      </MenuItem>
+                      <MenuItem
+                        onClick={() => {
+                          handleClose();
+                          navigate(`/history`);
+                        }}
+                        sx={{ width: "150px" }}
+                      >
+                        History
+                      </MenuItem>
+                    </Menu>
+                  </div>
+                </div>
+              ) : (
+                <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+                  {pages.map((page) => (
+                    <Typography
+                      key={page?.page}
+                      onClick={() => {
+                        handleCloseNavMenu();
+                        navigate(page?.path);
+                      }}
+                      sx={{
+                        my: 2,
+                        color: theme === "white" ? "white" : "black",
+                        display: "block",
+                        marginRight: "10px",
+                        fontFamily: "Mulish",
+                        textDecoration: "underline",
+                      }}
+                    >
+                      {page?.page}
+                    </Typography>
+                  ))}
+                </Box>
+              )}
+              {username ? null : (
+                <Button
+                  variant="outlined"
+                  sx={{
+                    color: "blue",
+                  }}
+                  onClick={() => {
+                    navigate("/sign");
+                  }}
+                >
+                  Sign Up
+                </Button>
+              )}
+            </Box>
           </Toolbar>
         </Container>
       </AppBar>

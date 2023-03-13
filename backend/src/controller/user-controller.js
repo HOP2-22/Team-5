@@ -15,7 +15,6 @@ exports.createUser = async (request, response) => {
   const hashed = await bcrypt.hash(request.body.password, salt);
   try {
     const user = await Users.create({
-      username: request.body.username,
       email: request.body.email,
       password: hashed,
     });
@@ -26,6 +25,17 @@ exports.createUser = async (request, response) => {
   } catch (error) {
     response.status(400).json(error.message);
   }
+};
+
+exports.checkUser = async (req, res) => {
+  const token = req?.headers?.token;
+  if (!token) {
+    return res.status(404).json({
+      message: "Invalid token",
+    });
+  }
+  const data = await jwt.decode(token, process.env.ACCESS_TOKEN_KEY);
+  res.status(200).json(data);
 };
 
 exports.login = async (req, res) => {
@@ -41,9 +51,16 @@ exports.login = async (req, res) => {
         process.env.ACCESS_TOKEN_KEY,
         { expiresIn: "30m" }
       );
-      return res
-        .status(200)
-        .json({ email: user.email, match: match, token: token });
+      console.log({
+        email: user.email,
+        match: match,
+        token: token,
+      });
+      return res.status(200).json({
+        email: user.email,
+        match: match,
+        token: token,
+      });
     } else {
       return res.status(400).json({ message: match });
     }
