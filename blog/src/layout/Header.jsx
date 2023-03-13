@@ -14,7 +14,7 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import { ColorModeContext } from "../context/ThemeContext";
 import { useContext } from "react";
 import MenuItem from "@mui/material/MenuItem";
-import Menu from "@mui/material/Menu";
+import { Menu } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 
 const pages = [
