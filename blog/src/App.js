@@ -9,6 +9,7 @@ import Footer from "./layout/Footer";
 import PostPage from "./pages/PostPage";
 import BlogPost from "./pages/BlogPost";
 import { Box } from "@mui/system";
+import PostCreate from "./components/BlogPost/CreatePost";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             <Route path="/sign" element={<SignUp />} />
             <Route path="/blogpost" element={<PostPage />} />
             <Route path="/blog" element={<BlogPost />} />
+            <Route path="/createblog" element={<PostCreate/>}/>
           </Routes>
           <Footer />
         </Box>
